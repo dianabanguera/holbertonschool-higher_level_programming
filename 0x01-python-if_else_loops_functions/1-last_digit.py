@@ -10,9 +10,8 @@ if number >= 0:
 elif number < 0:
     rest = ((number * -1) % 10) * -1
 if rest > 5:
-    print("Last digit og {0} is {1} {2}".format(number, rest, str1))
+    print("Last digit of {0} is {1} {2}".format(number, rest, str1))
 elif rest == 0:
     print("Last digit of {0} is {1} and is 0".format(number, rest))
 elif rest < 6 and rest != 0:
     print("Last digit of {0} is {1} {2}".format(number, rest, str2))
-
