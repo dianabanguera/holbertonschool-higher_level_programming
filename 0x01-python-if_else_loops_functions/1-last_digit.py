@@ -15,3 +15,4 @@ elif rest == 0:
     print("Last digit of {0} is {1} and is 0".format(number, rest))
 elif rest < 6 and rest != 0:
     print("Last digit of {0} is {1} {2}".format(number, rest, str2))
+
