@@ -1,4 +1,4 @@
 #!/usr/bin/python3
-pi = "Float: "
+pi = "Float:"
 number = 3.14159
 print(f"{pi} {number:.2f}")
