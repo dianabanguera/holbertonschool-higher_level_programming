@@ -4,14 +4,13 @@
 
 class Rectangle:
     """a simple rectangle class"""
-
     number_of_instances = 0
     print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         """Initialize the rectangle"""
-        self.height = height
         self.width = width
+        self.height = height
         Rectangle.number_of_instances += 1
 
     @property
@@ -47,20 +46,20 @@ class Rectangle:
         return self.__width * self.__height
 
     def perimeter(self):
-        """Return the perimeter of the rectangle"""
+        """Return the perimeter of rectangle"""
         if self.__width == 0 or self.__height == 0:
             return 0
         return (self.__width * 2) + (self.__height * 2)
 
     def __str__(self):
-        """Return a string representation of the rectangle"""
+        """Return a string representation of rectangle"""
         if self.__width == 0 or self.__height == 0:
             return ""
         return ((str(self.print_symbol) * self.__width + "\n")
                 * self.__height)[:-1]
 
     def __repr__(self):
-        """Return a string representation of the rectangle"""
+        """Return a string representation of rectangle"""
         return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
 
     def __del__(self):
