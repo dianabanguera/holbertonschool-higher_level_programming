@@ -37,14 +37,6 @@ Float overflow:
     >>> add_integer(1500.5)
     1598
 
-Non-number with number:
-	>>> add_integer([1], 2)
-    TypeError: a must be an integer
-
-number with non-number:
-	>>> add_integer(3, "2")
-    TypeError: b must be an integer
-
 Float NaN:
     >>> add_integer(float('NaN'))
     Traceback (most recent call last):
