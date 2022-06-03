@@ -18,12 +18,16 @@ Positive with negative:
     98
 
 Negative with positive:
-    >>> add_integer(-100, 2)
-    -98
+    >>> add_integer(-100, 202)
+    102
 
 One input:
     >>> add_integer(2)
     100
+
+Super long int:
+    >>> add_integer(999999999999999999999999999999, 1)
+	1000000000000000000000000000000
 
 Float and negative input:
     >>> add_integer(100.3, -2)
@@ -32,6 +36,14 @@ Float and negative input:
 Float overflow:
     >>> add_integer(1500.5)
     1598
+
+Non-number with number:
+	>>> add_integer([1], 2)
+    TypeError: a must be an integer
+
+number with non-number:
+	>>> add_integer(3, "2")
+    TypeError: b must be an integer
 
 Float NaN:
     >>> add_integer(float('NaN'))
