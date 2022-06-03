@@ -9,13 +9,17 @@ First import ``add_integer``
 
     >>> add_integer = __import__('0-add_integer').add_integer
 
-Basic usage:
-    >>> add_integer(1, 2)
-    3
+Regular addition:
+    >>> add_integer(2, 3)
+    5
 
-Negative input:
+Positive with negative:
     >>> add_integer(100, -2)
     98
+
+Negative with positive:
+    >>> add_integer(-100, 2)
+    -98
 
 One input:
     >>> add_integer(2)
