@@ -2,10 +2,8 @@
 """My list class"""
 
 
-def Mylist(list):
-    """Another class - subclass from list"""
-
+class MyList(list):
+    """subclass of list"""
     def print_sorted(self):
-        """Prints self"""
-
+        """prints the sorted list"""
         print(sorted(self))
