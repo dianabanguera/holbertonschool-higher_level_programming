@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """imports model base from base"""
+from unittest.loader import VALID_MODULE_NAME
 from models.base import Base
 
 
@@ -75,20 +76,49 @@ class Rectangle(Base):
         return self.__width * self.__height
 
     def display(self):
-        """Displays the rectangle"""
-        i = 0
+        """display: prints in stdout the Rectangle instance
+        with the character #
+        """
+        for row in range(self.y):
+                print("")
 
-        while i < self.__height:
-            j = 0
-            while j < self.__width:
-                print('#', end="")
-                j += 1
+        for col in range(self.height):
+            for k in range(self.x):
+                print(" ", end="")
+            for j in range(self.width):
+                print("#", end="")
             print("")
-            i += 1
 
     def __str__(self):
         """
         ...
         """
-        return str(f"[Rectangle] ({self.id}) {self.__x}" +
+        return str(f"[Rectangle] ({self.id}) {self.__x}/" +
 f"{self.__y} - {self.__width}/{self.__height}")
+
+    def update(self, *args, **kwargs):
+        """update the rectangle class"""
+        if args is not None and len(args) > 0:
+            if len(args) > 0:
+                self.id = args[0]
+            if len(args) > 1:
+                self.__width = args[1]
+            if len(args) > 2:
+                self.__height = args[2]
+            if len(args) > 3:
+                self.__x = args[3]
+            if len(args) > 4:
+                self.__y = args[4]
+        else:
+            for k, value in kwargs.items():
+                if k == "id":
+                    self.id = value
+                if k == "height":
+                    self.__height = value
+                if k == "width":
+                    self.__width = value
+                if k == "x":
+                    self.__x = value
+                if k == "y":
+                    self.__y = value
+
