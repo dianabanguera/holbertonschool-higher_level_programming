@@ -90,9 +90,7 @@ class Rectangle(Base):
             print("")
 
     def __str__(self):
-        """
-        ...
-        """
+        """Representation of the rectangle in string format"""
         return str(f"[Rectangle] ({self.id}) {self.__x}/" +
 f"{self.__y} - {self.__width}/{self.__height}")
 
@@ -121,4 +119,15 @@ f"{self.__y} - {self.__width}/{self.__height}")
                     self.__x = value
                 if k == "y":
                     self.__y = value
+
+    def to_dictionary(self):
+        """Returns the dictionary representation
+        of a Rectangle"""
+        my_dictionary = {}
+        my_dictionary["id"] = self.id
+        my_dictionary["width"] = self.width
+        my_dictionary["height"] = self.height
+        my_dictionary["x"] = self.x
+        my_dictionary["y"] = self.y
+        return my_dictionary
 
