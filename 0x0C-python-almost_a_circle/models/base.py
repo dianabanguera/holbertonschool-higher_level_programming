@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 """Base class"""
-from fileinput import filename
 import json
-from multiprocessing import dummy
-
-from pyrsistent import l
 
 
 class Base:
@@ -12,7 +8,7 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """Initialize"""
+        """Initialize tha class base"""
         if id is not None:
             self.id = id
         else:
