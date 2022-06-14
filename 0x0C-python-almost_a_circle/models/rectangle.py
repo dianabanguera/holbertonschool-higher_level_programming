@@ -8,6 +8,7 @@ class Rectangle(Base):
     """A rectangle class"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
+        """Initialize the rectangle"""
         super().__init__(id)
         self.width = width
         self.height = height
@@ -80,7 +81,7 @@ class Rectangle(Base):
         with the character #
         """
         for row in range(self.y):
-                print("")
+            print("")
 
         for col in range(self.height):
             for k in range(self.x):
@@ -92,7 +93,7 @@ class Rectangle(Base):
     def __str__(self):
         """Representation of the rectangle in string format"""
         return str(f"[Rectangle] ({self.id}) {self.__x}/" +
-f"{self.__y} - {self.__width}/{self.__height}")
+                   f"{self.__y} - {self.__width}/{self.__height}")
 
     def update(self, *args, **kwargs):
         """update the rectangle class"""
@@ -130,4 +131,3 @@ f"{self.__y} - {self.__width}/{self.__height}")
         my_dictionary["x"] = self.x
         my_dictionary["y"] = self.y
         return my_dictionary
-
