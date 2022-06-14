@@ -35,7 +35,7 @@ class Base:
         """
         writes the JSON string representation of list_objs to a file
         """
-        if list_objs is None or list_objs == []:
+        if list_objs is None or len(list_objs) == 0:
             json_s = "[]"
         else:
             json_s = cls.to_json_string(
@@ -47,9 +47,9 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """
-        ...
+        Return json string
         """
-        if json_string is None or json_string == []:
+        if type(json_string) is not str or len(json_string) == 0:
             return []
         else:
             return json.loads(json_string)
@@ -67,7 +67,7 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """
-        ...
+        Return a list
         """
         filename = cls.__name__ + ".json"
         l1 = []
