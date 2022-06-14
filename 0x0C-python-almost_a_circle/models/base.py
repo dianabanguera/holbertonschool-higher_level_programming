@@ -1,26 +1,29 @@
 #!/usr/bin/python3
-"""Base class"""
-from ast import List
+"""
+...
+"""
 from fileinput import filename
 import json
 import os
 
-
 class Base:
-    """Base"""
+    """
+    ...
+    """
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """Initialize the class"""
         if id is not None:
             self.id = id
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
-
+    
     @staticmethod
     def to_json_string(list_dictionaries):
-        """Returns the JSON string representation of list_dictionaries"""
+        """
+        ...
+        """
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
         else:
@@ -34,15 +37,16 @@ class Base:
         if list_objs is None or list_objs == []:
             json_s = "[]"
         else:
-            json_s = cls.to_json_string(
-                [element.to_dictionary() for element in list_objs])
+            json_s = cls.to_json_string([element.to_dictionary() for element in list_objs])
         filename = f"{cls.__name__}.json"
         with open(filename, "w") as file:
             file.write(json_s)
 
     @staticmethod
     def from_json_string(json_string):
-        """Returns the list of the JSON string representation json_string"""
+        """
+        ...
+        """
         if json_string is None or json_string == []:
             return []
         else:
@@ -60,14 +64,16 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """returns a list of instances"""
+        """
+        ...
+        """
         filename = cls.__name__ + ".json"
-        List = []
+        l1 = []
         try:
             with open(filename, 'r') as f:
-                list = cls.from_json_string(f.read())
-            for i, e in enumerate(list):
-                list[i] = cls.create(**list[i])
+                l1 = cls.from_json_string(f.read())
+            for i, e in enumerate(l1):
+                l1[i] = cls.create(**l1[i])
         except Exception:
             pass
-        return list
+        return l1
