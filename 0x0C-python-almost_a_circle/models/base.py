@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Base class"""
+from fileinput import filename
 import json
+import os
 
 
 class Base:
