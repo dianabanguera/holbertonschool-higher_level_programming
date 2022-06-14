@@ -1,14 +1,15 @@
 #!/usr/bin/python3
 """
-...
+Base .__nb_objects
 """
 from fileinput import filename
 import json
 import os
 
+
 class Base:
     """
-    ...
+    Class base
     """
     __nb_objects = 0
 
@@ -18,11 +19,11 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
-    
+
     @staticmethod
     def to_json_string(list_dictionaries):
         """
-        ...
+        Return a json
         """
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
@@ -37,7 +38,8 @@ class Base:
         if list_objs is None or list_objs == []:
             json_s = "[]"
         else:
-            json_s = cls.to_json_string([element.to_dictionary() for element in list_objs])
+            json_s = cls.to_json_string(
+                [element.to_dictionary() for element in list_objs])
         filename = f"{cls.__name__}.json"
         with open(filename, "w") as file:
             file.write(json_s)
