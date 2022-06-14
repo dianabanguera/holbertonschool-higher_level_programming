@@ -2,6 +2,9 @@
 """Base class"""
 from fileinput import filename
 import json
+from multiprocessing import dummy
+
+from pyrsistent import l
 
 
 class Base:
@@ -45,3 +48,24 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """Returns an instance with all attributes already set"""
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+        elif cls.__name__ == "Square":
+            dummy = cls(1)
+        """update dummy with obj func update()"""
+        dummy.update(**dictionary)
+        return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """returns a list of instances"""
+        filename = f"{cls.__name__}.json"
+        list = []
+        try:
+            with open(filename, "r") as file:
+                list = cls.from_json_string(file.read())
+            for i, element in enumerate(list):
+                list[i] = cls.create(**list[i])
+        except:
+            pass
+        return list
