@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Base class"""
+from ast import List
 from fileinput import filename
 import json
 import os
@@ -10,7 +11,7 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """Initialize tha class base"""
+        """Initialize the class"""
         if id is not None:
             self.id = id
         else:
@@ -27,11 +28,14 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """writes the JSON string representation of list_objs to a file"""
+        """
+        writes the JSON string representation of list_objs to a file
+        """
         if list_objs is None or list_objs == []:
             json_s = "[]"
         else:
-            json_s = cls.to_json_string([e.to_dictionary() for e in list_objs])
+            json_s = cls.to_json_string(
+                [element.to_dictionary() for element in list_objs])
         filename = f"{cls.__name__}.json"
         with open(filename, "w") as file:
             file.write(json_s)
@@ -46,25 +50,24 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """Returns an instance with all attributes already set"""
+        """returns an instance with all attributes already set"""
         if cls.__name__ == "Rectangle":
             dummy = cls(1, 1)
         elif cls.__name__ == "Square":
             dummy = cls(1)
-        """update dummy with obj func update()"""
         dummy.update(**dictionary)
         return dummy
 
     @classmethod
     def load_from_file(cls):
         """returns a list of instances"""
-        filename = f"{cls.__name__}.json"
-        list = []
+        filename = cls.__name__ + ".json"
+        List = []
         try:
-            with open(filename, "r") as file:
-                list = cls.from_json_string(file.read())
-            for i, element in enumerate(list):
+            with open(filename, 'r') as f:
+                list = cls.from_json_string(f.read())
+            for i, e in enumerate(list):
                 list[i] = cls.create(**list[i])
-        except:
+        except Exception:
             pass
         return list
