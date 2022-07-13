@@ -2,4 +2,4 @@
 -- If the database hbtn_0c_0 already exists, your script should not fail.
 -- SELECT or SHOW statements are not allowed.
 
-DELETE database If exists hbtn_0c_0;
+DROP database If exists hbtn_0c_0;
