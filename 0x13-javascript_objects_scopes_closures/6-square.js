@@ -1,7 +1,7 @@
 #!/usr/bin/node
-const square = require('./4-rectangle');
+const Rectangle = require('./4-rectangle');
 
-class Square extends square {
+class Square extends Rectangle {
   charPrint (c) {
     if (c === undefined) {
       this.print();
